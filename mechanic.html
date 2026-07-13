@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Mechanic Chat — Auto Fix AI</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🔧</span>
+      <span>Auto Fix <span class="logo-accent">AI</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="mechanic.html" class="nav-link active">AI Mechanic</a></li>
+      <li><a href="garages.html" class="nav-link">Garages</a></li>
+      <li><a href="parts.html" class="nav-link">Parts</a></li>
+    </ul>
+    <a href="mechanic.html" class="btn-primary">Ask AI Mechanic</a>
+    <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="mechanic.html">AI Mechanic</a>
+    <a href="garages.html">Garages</a>
+    <a href="parts.html">Parts</a>
+  </div>
+</nav>
+
+<div class="mechanic-page">
+
+  <div class="car-panel">
+    <h2 class="panel-title">Your Car</h2>
+    <div class="form-group">
+      <label>Brand</label>
+      <select id="carBrand" onchange="updateModels()">
+        <option value="">Select brand</option>
+        <option>Maruti Suzuki</option>
+        <option>Hyundai</option>
+        <option>Tata Motors</option>
+        <option>Mahindra</option>
+        <option>Toyota</option>
+        <option>Honda</option>
+        <option>Kia</option>
+        <option>Renault</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Model</label>
+      <select id="carModel">
+        <option value="">Select model</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Year</label>
+      <select id="carYear">
+        <option value="">Select year</option>
+        <option>2024</option><option>2023</option><option>2022</option>
+        <option>2021</option><option>2020</option><option>2019</option>
+        <option>2018</option><option>2017</option><option>2016</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Fuel Type</label>
+      <select id="fuelType">
+        <option>Petrol</option><option>Diesel</option><option>CNG</option><option>Electric</option>
+      </select>
+    </div>
+
+    <div class="api-section">
+      <label>Claude API Key <span class="optional">(optional — for live AI)</span></label>
+      <input type="password" id="apiKey" placeholder="sk-ant-...">
+      <p class="api-hint">Without a key, this runs entirely on the built-in offline knowledge base below — no internet call is made. Note: calling the Anthropic API directly from a browser will usually be blocked by CORS; for a production app, route this through your own backend.</p>
+    </div>
+
+    <div class="quick-issues">
+      <div class="quick-label">Quick questions</div>
+      <button class="quick-btn" onclick="quickAsk('Engine warning light is on')">⚠️ Engine light on</button>
+      <button class="quick-btn" onclick="quickAsk('AC is not cooling properly')">❄️ AC not cooling</button>
+      <button class="quick-btn" onclick="quickAsk('Car is making knocking sound from engine')">🔊 Engine knocking</button>
+      <button class="quick-btn" onclick="quickAsk('Battery warning light appeared')">🔋 Battery warning</button>
+      <button class="quick-btn" onclick="quickAsk('Brakes are making squeaking noise')">🛑 Brake noise</button>
+      <button class="quick-btn" onclick="quickAsk('Car is overheating')">🌡️ Overheating</button>
+      <button class="quick-btn" onclick="quickAsk('Steering wheel is vibrating')">🎯 Steering vibration</button>
+      <button class="quick-btn" onclick="quickAsk('Fuel efficiency dropped suddenly')">⛽ Poor mileage</button>
+    </div>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="ai-avatar">🤖</div>
+      <div>
+        <div class="ai-name">Auto Fix AI Mechanic</div>
+        <div class="ai-status"><span class="status-dot"></span> Online — offline knowledge base ready</div>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg ai-msg">
+        <div class="msg-bubble">
+          👋 Hello! I'm your AI Car Mechanic — this is the standalone build, running fully on its own.<br><br>
+          Select your car on the left, then type a problem or tap a quick question. I'll answer instantly from the offline knowledge base built into this page.
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <div class="input-row">
+        <input type="text" id="userInput" class="chat-input" placeholder="Describe your car problem..." onkeypress="handleKey(event)">
+        <button class="send-btn" onclick="sendMessage()" id="sendBtn">➤</button>
+      </div>
+      <div class="input-hint">Press Enter to send · Runs offline by default, no internet required</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="main.js"></script>
+<script src="mechanic.js"></script>
+</body>
+</html>

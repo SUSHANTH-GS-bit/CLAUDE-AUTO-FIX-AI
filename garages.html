@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garage Finder — Auto Fix AI</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* keep Leaflet's default light popup readable on our dark theme */
+  .leaflet-popup-content-wrapper{background:#161B22;color:#E6EDF3;border-radius:10px}
+  .leaflet-popup-tip{background:#161B22}
+  .leaflet-popup-content b{color:#F97316}
+  .leaflet-container{background:#12151C}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🔧</span>
+      <span>Auto Fix <span class="logo-accent">AI</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="mechanic.html" class="nav-link">AI Mechanic</a></li>
+      <li><a href="garages.html" class="nav-link active">Garages</a></li>
+      <li><a href="parts.html" class="nav-link">Parts</a></li>
+    </ul>
+    <a href="mechanic.html" class="btn-primary">Ask AI Mechanic</a>
+    <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="mechanic.html">AI Mechanic</a>
+    <a href="garages.html">Garages</a>
+    <a href="parts.html">Parts</a>
+  </div>
+</nav>
+
+<div class="garage-page">
+  <div class="page-head">
+    <h1>Find a garage near you</h1>
+    <p>Real interactive map (OpenStreetMap) — no API key needed. Sample garages shown around Bengaluru by default.</p>
+  </div>
+
+  <div class="garage-layout">
+    <div>
+      <div id="map"></div>
+      <button class="locate-btn" onclick="useMyLocation()">📍 Use my location</button>
+    </div>
+    <div class="garage-list" id="garageList"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="main.js"></script>
+<script src="garages.js"></script>
+</body>
+</html>

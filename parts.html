@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spare Parts Price Checker — Auto Fix AI</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🔧</span>
+      <span>Auto Fix <span class="logo-accent">AI</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="mechanic.html" class="nav-link">AI Mechanic</a></li>
+      <li><a href="garages.html" class="nav-link">Garages</a></li>
+      <li><a href="parts.html" class="nav-link active">Parts</a></li>
+    </ul>
+    <a href="mechanic.html" class="btn-primary">Ask AI Mechanic</a>
+    <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="mechanic.html">AI Mechanic</a>
+    <a href="garages.html">Garages</a>
+    <a href="parts.html">Parts</a>
+  </div>
+</nav>
+
+<div class="parts-page">
+  <div class="page-head">
+    <h1>Spare Parts Price Checker</h1>
+    <p>Know the fair price before you pay. Search or filter by car brand.</p>
+  </div>
+
+  <div class="parts-search">
+    <input type="text" id="searchInput" placeholder="Search for a part (e.g. brake pad, filter, battery)..." oninput="renderParts()">
+    <select id="brandFilter" onchange="renderParts()">
+      <option value="">All brands</option>
+      <option>Maruti Suzuki</option>
+      <option>Hyundai</option>
+      <option>Tata Motors</option>
+      <option>Mahindra</option>
+      <option>Honda</option>
+      <option>Universal</option>
+    </select>
+  </div>
+
+  <div class="parts-grid" id="partsGrid"></div>
+</div>
+
+<script src="main.js"></script>
+<script src="parts.js"></script>
+</body>
+</html>
